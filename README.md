@@ -24,17 +24,17 @@ This package consists of two nodes:
 
 ## Usage
 
-1. Launch the nodes using the provided launch file:
+1. Modify the values of ticks in the `ticks_publisher.py` node to control the movement of the robot.
+   
+2. Launch the nodes using the provided launch file:
     ``` bash
    roslaunch wheel_encoder odometry.launch
    ```
-        
-2. Modify the values of ticks in the `ticks_publisher.py` node to change the movement of the robot.
-
+    
 3. Set the fixed frame to `base_link` in RViz and visualize TF and the robot model to see the movement of the robot.
 
 
 https://github.com/raneem409/ros_wheel_encoder_odometry/assets/72455839/3c3520bf-c2da-4a30-b399-851406504681
 
-Users have the flexibility to control the robot's movement by changing the values of the ticks in (` ticks_publisher node`)
+Users have the flexibility to control the robot's movement by changing the values of the ticks in `ticks_publisher node`
 

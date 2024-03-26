@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!-- Launch the odometry node -->
+  <node pkg="wheel_encoder" type="odom_node.py" name="odom_node" output="screen">
+  </node>
+
+  <!-- Launch the ticks generator node -->
+  <node pkg="wheel_encoder" type="ticks_publisher.py" name="ticks_publisher" output="screen">
+  </node>
+  
+  <param command="$(find xacro)/xacro '$(find wheel_encoder)/urdf/odom_baselink.xacro'" name="robot_description"/>
+  <node args="-param robot_description -urdf -model waiteronix11" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>
+
+  <!-- Send fake joint values-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+
+  <!-- Send robot states to tf -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+  
+  <!-- rviz -->
+  <node name= "rviz" pkg= "rviz" type= "rviz"/>
+
+</launch>
+
+
